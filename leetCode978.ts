@@ -28,9 +28,9 @@ function maxTurbulenceSize(arr: number[]): number {
     while (rightIdx < arr.length) {
         const lastDelta = arr[rightIdx - 1] - arr[rightIdx - 2]
         const currentDelta = arr[rightIdx] - arr[rightIdx - 1]
-        // if (lastDelta * currentDelta < 0) {
-        if (lastDelta && currentDelta && (lastDelta ^ currentDelta) < 0) {  // 位运算居然能节省0.8M内存。注意避开为0的
+        if (lastDelta * currentDelta < 0) {
             // 异号。
+            // if (lastDelta && currentDelta && (lastDelta ^ currentDelta) < 0) {  // 注意避开为0的
             maxCount = Math.max(maxCount, rightIdx - leftIdx + 1)
         } else {
             leftIdx = rightIdx - 1
