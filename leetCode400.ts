@@ -47,6 +47,6 @@ function findNthDigit(n: number): number {
 
 // console.log(findNthDigit(3)) // 3
 // console.log(findNthDigit(17)) // 3  // 13 的 3
-// console.log(findNthDigit(130)) // 可能是 7 ？
+// console.log(findNthDigit(130)) // 7
 // console.log(findNthDigit(10000_00000)) // 1
 console.log(findNthDigit(100)) // 5
