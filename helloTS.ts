@@ -36,7 +36,7 @@
 // 类
 class Shape {
     size: number;
-    private description: string;
+    protected description: string;
 
     constructor() {
         this.description = 'One shape with unknown size'
