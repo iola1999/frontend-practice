@@ -33,14 +33,14 @@ function findNthDigit(n: number): number {
     let numIndex1: number
     let numIndex2: number
     if (test % (index + 1) === 0) {
-        numIndex1 = test / (index + 1) - 1
+        numIndex1 = test / (index + 1)
         numIndex2 = index + 1
     } else {
         numIndex1 = Math.floor(test / (index + 1))    // 这一段，每个数字 位数是 index+1
         numIndex2 = test % (index + 1)
     }
-    // console.log('第 数字的第 位', numIndex1 + 1, numIndex2)
-    const whichNumber: number = whichStart + (numIndex1 + 1) - 1
+    // console.log('第 数字的第 位', numIndex1 , numIndex2)
+    const whichNumber: number = whichStart + numIndex1 - 1
     // console.log('whichNumber', whichNumber)
     return parseInt(String(whichNumber).substring(numIndex2 - 1, numIndex2))
 }
