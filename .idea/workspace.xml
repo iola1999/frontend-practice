@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdcf9b04-2219-4545-b833-004c0e3c8432" name="默认的" comment="">
-      <change afterPath="$PROJECT_DIR$/leetCode978.ts" afterDir="false" />
+    <list default="true" id="cdcf9b04-2219-4545-b833-004c0e3c8432" name="默认的" comment="20210209">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helloTS.ts" beforeDir="false" afterPath="$PROJECT_DIR$/helloTS.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetCode53.ts" beforeDir="false" afterPath="$PROJECT_DIR$/leetCode53.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetCode978.ts" beforeDir="false" afterPath="$PROJECT_DIR$/leetCode978.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,8 +59,16 @@
       <workItem from="1607581921025" duration="12261000" />
       <workItem from="1612688675311" duration="4509000" />
       <workItem from="1612773587635" duration="1100000" />
-      <workItem from="1612828918684" duration="1286000" />
+      <workItem from="1612828918684" duration="8553000" />
     </task>
+    <task id="LOCAL-00001" summary="20210209">
+      <created>1612839117859</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1612839117859</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -70,6 +76,7 @@
     <option name="exactExcludedFiles">
       <list>
         <option value="$PROJECT_DIR$/helloTS.js" />
+        <option value="$PROJECT_DIR$/leetCode978.js" />
       </list>
     </option>
   </component>
@@ -83,5 +90,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="20210209" />
+    <option name="LAST_COMMIT_MESSAGE" value="20210209" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/leetCode978.ts</url>
+          <line>30</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
