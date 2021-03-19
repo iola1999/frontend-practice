@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdcf9b04-2219-4545-b833-004c0e3c8432" name="默认的" comment="刚刚写错了">
+    <list default="true" id="cdcf9b04-2219-4545-b833-004c0e3c8432" name="默认的" comment="搞不定了，992有点难啊">
+      <change afterPath="$PROJECT_DIR$/Hs20210310.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetCode303. 区域和检索 - 数组不可变.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetCode832. 翻转图像.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/syntax-demo/LRUCache.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/syntax-demo/promiseAPlus.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/syntax-demo/promiseTry.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/leetCode992.ts" beforeDir="false" afterPath="$PROJECT_DIR$/leetCode992.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helloTS.ts" beforeDir="false" afterPath="$PROJECT_DIR$/syntax-demo/helloTS.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +20,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -21,7 +29,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1lSE6oOPEXIp0QytnhlGgXHbkP9" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -40,13 +50,24 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\frontend-project\leetcode-typescript" />
       <recent name="D:\frontend-project\typescript-demo" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\frontend-project\leetcode-typescript\syntax-demo" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Node.js.nodeRun">
+    <configuration name="nodeRun" type="NodeJSConfigurationType" singleton="false" node-parameters="$FilePath$" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
     <configuration name="ts-node" type="NodeJSConfigurationType" application-parameters="$FileName$" node-parameters="&quot;C:\Users\fwl19\AppData\Roaming\npm\node_modules\ts-node\dist\bin.js&quot;" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Node.js.ts-node" />
+      <item itemvalue="Node.js.nodeRun" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -60,7 +81,21 @@
       <workItem from="1612688675311" duration="4509000" />
       <workItem from="1612773587635" duration="1100000" />
       <workItem from="1612828918684" duration="13683000" />
-      <workItem from="1612881487288" duration="4142000" />
+      <workItem from="1612881487288" duration="4642000" />
+      <workItem from="1613023842248" duration="1194000" />
+      <workItem from="1613612554763" duration="40000" />
+      <workItem from="1613805919308" duration="1063000" />
+      <workItem from="1614167084386" duration="1781000" />
+      <workItem from="1614564409366" duration="3436000" />
+      <workItem from="1614685725918" duration="4105000" />
+      <workItem from="1614748929623" duration="894000" />
+      <workItem from="1614751170327" duration="661000" />
+      <workItem from="1614993569188" duration="27000" />
+      <workItem from="1615272714130" duration="225000" />
+      <workItem from="1615272982129" duration="1125000" />
+      <workItem from="1615371036640" duration="24000" />
+      <workItem from="1615446719260" duration="1320000" />
+      <workItem from="1616130415757" duration="1079000" />
     </task>
     <task id="LOCAL-00001" summary="20210209">
       <created>1612839117859</created>
@@ -118,16 +153,23 @@
       <option name="project" value="LOCAL" />
       <updated>1612859590871</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="搞不定了，992有点难啊">
+      <created>1612885841341</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1612885841341</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
     <option name="exactExcludedFiles">
       <list>
-        <option value="$PROJECT_DIR$/helloTS.js" />
         <option value="$PROJECT_DIR$/leetCode978.js" />
         <option value="$PROJECT_DIR$/leetCode400.js" />
+        <option value="$PROJECT_DIR$/leetCode832. 翻转图像.js" />
       </list>
     </option>
   </component>
@@ -151,7 +193,8 @@
     <MESSAGE value="不好意思 原来ts的提交就我这一次" />
     <MESSAGE value="nothing" />
     <MESSAGE value="刚刚写错了" />
-    <option name="LAST_COMMIT_MESSAGE" value="刚刚写错了" />
+    <MESSAGE value="搞不定了，992有点难啊" />
+    <option name="LAST_COMMIT_MESSAGE" value="搞不定了，992有点难啊" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -160,11 +203,6 @@
           <url>file://$PROJECT_DIR$/leetCode978.ts</url>
           <line>30</line>
           <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/leetCode400.ts</url>
-          <line>35</line>
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
