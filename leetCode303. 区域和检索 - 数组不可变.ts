@@ -31,22 +31,20 @@ numArray.sumRange(0, 5); // return -3 ((-2) + 0 + 3 + (-5) + 2 + (-1))
 最多调用 104 次 sumRange 方法
 * */
 class NumArray {
-    prefixSum: number[] = []
+  prefixSum: number[] = [];
 
-    constructor(nums: number[]) {
-        this.prefixSum.push(0)
-        for (let i = 0; i < nums.length; i++) {
-            this.prefixSum.push(this.prefixSum[i] + nums[i])
-        }
-        console.log(this.prefixSum)
+  constructor(nums: number[]) {
+    this.prefixSum.push(0);
+    for (let i = 0; i < nums.length; i++) {
+      this.prefixSum.push(this.prefixSum[i] + nums[i]);
     }
+    console.log(this.prefixSum);
+  }
 
-    sumRange(i: number, j: number): number {
-        return this.prefixSum[j+1] - this.prefixSum[i]
-    }
+  sumRange(i: number, j: number): number {
+    return this.prefixSum[j + 1] - this.prefixSum[i];
+  }
 }
 
-
-const aaa = new NumArray([1, 2, 3, 4, 5, 6])
-console.log(aaa.sumRange(2, 5))
-
+const numArray = new NumArray([1, 2, 3, 4, 5, 6]);
+console.log(numArray.sumRange(2, 5));

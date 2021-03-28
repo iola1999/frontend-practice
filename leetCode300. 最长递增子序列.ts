@@ -32,16 +32,15 @@
 你能将算法的时间复杂度降低到 O(n log(n)) 吗?
 * */
 function lengthOfLIS(nums: number[]): number {
-    let maxCount: number = 1
-    let leftIdx = 0, rightIdx = 0
-    while (rightIdx < nums.length) {
-
-        rightIdx += 1
-    }
-    return maxCount
+  let maxCount: number = 1;
+  let leftIdx = 0,
+    rightIdx = 0;
+  while (rightIdx < nums.length) {
+    rightIdx += 1;
+  }
+  return maxCount;
 }
 
-
-console.log(lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]))    // 4  [2,3,7,101]
-console.log(lengthOfLIS([0, 1, 0, 3, 2, 3]))    // 4
-console.log(lengthOfLIS([7, 7, 7, 7, 7, 7, 7]))    // 1
+console.log(lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18])); // 4  [2,3,7,101]
+console.log(lengthOfLIS([0, 1, 0, 3, 2, 3])); // 4
+console.log(lengthOfLIS([7, 7, 7, 7, 7, 7, 7])); // 1

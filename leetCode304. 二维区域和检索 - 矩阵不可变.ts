@@ -29,31 +29,34 @@ sumRegion(1, 2, 2, 4) -> 12
 你可以假设 row1 ≤ row2 且 col1 ≤ col2 。
 * */
 class NumMatrix {
-    prefixSumForEveryRow:number[][] = []
-    constructor(matrix: number[][]) {
-        for (let rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
-            this.prefixSumForEveryRow.push([])
-            this.prefixSumForEveryRow[rowIndex].push(0)
-            for (let colIndex = 0; colIndex < matrix[rowIndex].length; colIndex++) {
-                this.prefixSumForEveryRow[rowIndex].push(this.prefixSumForEveryRow[rowIndex][colIndex] + matrix[rowIndex][colIndex])
-            }
-        }
+  prefixSumForEveryRow: number[][] = [];
+  constructor(matrix: number[][]) {
+    for (let rowIndex = 0; rowIndex < matrix.length; rowIndex++) {
+      this.prefixSumForEveryRow.push([]);
+      this.prefixSumForEveryRow[rowIndex].push(0);
+      for (let colIndex = 0; colIndex < matrix[rowIndex].length; colIndex++) {
+        this.prefixSumForEveryRow[rowIndex].push(
+          this.prefixSumForEveryRow[rowIndex][colIndex] + matrix[rowIndex][colIndex]
+        );
+      }
     }
+  }
 
-    sumRegion(row1: number, col1: number, row2: number, col2: number): number {
-        let result = 0
-        for (let rowIndex = row1; rowIndex <=  row2; rowIndex++) {
-            result+=(this.prefixSumForEveryRow[rowIndex][col2+1] - this.prefixSumForEveryRow[rowIndex][col1])
-        }
-        return result
+  sumRegion(row1: number, col1: number, row2: number, col2: number): number {
+    let result = 0;
+    for (let rowIndex = row1; rowIndex <= row2; rowIndex++) {
+      result +=
+        this.prefixSumForEveryRow[rowIndex][col2 + 1] - this.prefixSumForEveryRow[rowIndex][col1];
     }
+    return result;
+  }
 }
 
-const aaa = new NumMatrix([
-    [3, 0, 1, 4, 2],
-    [5, 6, 3, 2, 1],
-    [1, 2, 0, 1, 5],
-    [4, 1, 0, 1, 7],
-    [1, 0, 3, 0, 5]])
-console.log(aaa.sumRegion(2, 1, 4, 3))  // 8
-
+const numMatrix = new NumMatrix([
+  [3, 0, 1, 4, 2],
+  [5, 6, 3, 2, 1],
+  [1, 2, 0, 1, 5],
+  [4, 1, 0, 1, 7],
+  [1, 0, 3, 0, 5],
+]);
+console.log(numMatrix.sumRegion(2, 1, 4, 3)); // 8
