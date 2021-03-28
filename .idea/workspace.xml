@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdcf9b04-2219-4545-b833-004c0e3c8432" name="默认的" comment="搞不定了，992有点难啊">
-      <change afterPath="$PROJECT_DIR$/Hs20210310.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetCode303. 区域和检索 - 数组不可变.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/leetCode832. 翻转图像.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/syntax-demo/LRUCache.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/syntax-demo/promiseAPlus.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/syntax-demo/promiseTry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/syntax-demo/AES-demo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/syntax-demo/EventEmitter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/syntax-demo/syntaxTest.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helloTS.ts" beforeDir="false" afterPath="$PROJECT_DIR$/syntax-demo/helloTS.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/syntax-demo/LRUCache.ts" beforeDir="false" afterPath="$PROJECT_DIR$/syntax-demo/LRUCache.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="TypeScript File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -39,7 +35,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/web_content" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -50,6 +46,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\frontend-project\leetcode-typescript\syntax-demo" />
       <recent name="D:\frontend-project\leetcode-typescript" />
       <recent name="D:\frontend-project\typescript-demo" />
     </key>
@@ -57,11 +54,11 @@
       <recent name="D:\frontend-project\leetcode-typescript\syntax-demo" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.nodeRun">
+  <component name="RunManager" selected="Node.js.ts-node">
     <configuration name="nodeRun" type="NodeJSConfigurationType" singleton="false" node-parameters="$FilePath$" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
-    <configuration name="ts-node" type="NodeJSConfigurationType" application-parameters="$FileName$" node-parameters="&quot;C:\Users\fwl19\AppData\Roaming\npm\node_modules\ts-node\dist\bin.js&quot;" working-dir="$PROJECT_DIR$">
+    <configuration name="ts-node" type="NodeJSConfigurationType" node-parameters="&quot;C:\Users\fwl19\AppData\Roaming\npm\node_modules\ts-node\dist\bin.js&quot; $FilePath$" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <list>
@@ -95,7 +92,8 @@
       <workItem from="1615272982129" duration="1125000" />
       <workItem from="1615371036640" duration="24000" />
       <workItem from="1615446719260" duration="1320000" />
-      <workItem from="1616130415757" duration="1079000" />
+      <workItem from="1616130415757" duration="7000000" />
+      <workItem from="1616390547538" duration="6208000" />
     </task>
     <task id="LOCAL-00001" summary="20210209">
       <created>1612839117859</created>
@@ -160,7 +158,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612885841341</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="写写ts开心开心">
+      <created>1616132016258</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1616132016258</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +199,8 @@
     <MESSAGE value="nothing" />
     <MESSAGE value="刚刚写错了" />
     <MESSAGE value="搞不定了，992有点难啊" />
-    <option name="LAST_COMMIT_MESSAGE" value="搞不定了，992有点难啊" />
+    <MESSAGE value="写写ts开心开心" />
+    <option name="LAST_COMMIT_MESSAGE" value="写写ts开心开心" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
