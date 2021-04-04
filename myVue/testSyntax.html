@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #thatBox {
+            position: fixed;
+            left: 50px;
+            top: 100px;
+            height: 200px;
+            width: 400px;
+            border: 1px solid #ddd;
+            background: linear-gradient(
+                    154deg, transparent 49.5%, #ddd 49.5%, #ddd 50.5%, transparent 50.5%);
+        }
+    </style>
+</head>
+<body>
+<div id="thatBox">
+</div>
+</body>
+<script>
+    const thatBox = document.querySelector("#thatBox")
+    console.log(thatBox.offsetLeft, thatBox.offsetTop + thatBox.offsetHeight)
+    let lastStatus;
+    const handleMove = (event) => {
+        const cursorX = event.clientX - thatBox.offsetLeft
+        const cursorY = (thatBox.offsetTop + thatBox.offsetHeight) - event.clientY
+        const newStatus = cursorY / cursorX > thatBox.offsetHeight / thatBox.offsetWidth
+        if (newStatus !== lastStatus) {
+            console.log(newStatus ? '在对角线上方' : '在对角线下方')
+            lastStatus = newStatus
+        }
+    }
+    thatBox.addEventListener('mousemove', handleMove)
+</script>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "leetcode-typescript",
+  "version": "1.0.0",
+  "dependencies": {
+    "sync-request": "^6.1.0"
+  },
+  "devDependencies": {
+    "atob": "^2.1.2",
+    "node-localstorage": "^2.1.6"
+  }
+}
