@@ -1,5 +1,4 @@
-/*
-// 类型识别
+/* 类型识别
 // typeof 可以正确识别：Undefined、Boolean、Number、String、Symbol、Function 等类型的数据，但是对于其他的都会认为是 object，
 // 比如 Null、Date 等，所以通过 typeof 来判断数据类型会不准确。但是可以使用 Object.prototype.toString 实现。
 console.log(typeof new Date());
@@ -14,8 +13,7 @@ getRealType(null);
 getRealType(new Function("console.log(123)"));
 * */
 
-/*
-// 继承 原型链继承
+/* 继承 原型链继承
 // 存在的问题：
 // 问题1：原型中包含的引用类型属性将被所有实例共享；
 // 问题2：子类在实例化的时候不能给父类构造函数传参；
@@ -50,8 +48,7 @@ console.log(dogA.getCurrentColor());
 console.log(dogB.getCurrentColor());
 // * */
 
-/*
-// 继承 构造函数实现继承
+/* 继承 构造函数实现继承
 function Animal(name) {
   this.possibleColors = ["black", "white"]; //someReferenceTypedValue
   this.name = name;
@@ -72,8 +69,7 @@ console.log(dogA.getPossibleColors());
 console.log(dogB.getPossibleColors()); // [ 'black', 'white' ] 未影响。但是这种方式，方法也被创建了多份
 * */
 
-/*
-// 继承 组合继承
+/* 继承 组合继承
 // 使用原型链继承原型上的属性和方法，而通过盗用构造函数继承实例属性。这样既可以把方法定义在原型上以实现重用，又可以让每个实例都有自己的属性。
 // 这种方式多余地调用了一次父类构造函数。一次定义时的 Animal.call，多次 new Animal()，
 function Animal(name) {
@@ -102,8 +98,7 @@ console.log(dogA.getPossibleColors());
 console.log(dogB.getPossibleColors()); // [ 'black', 'white' ] 未影响
 * */
 
-/*
-// 继承 寄生式组合继承
+/* 继承 寄生式组合继承
 function Animal(name) {
   console.log("Animal constructor called");
   this.name = name;
@@ -130,8 +125,7 @@ const dogA = new Dog("dogA", 4);
 const dogB = new Dog("dogB", 4);
 * */
 
-/*
-// 继承 ES6 Class
+/* 继承 ES6 Class
 class Animal {
   constructor(name) {
     this.name = name;
@@ -152,8 +146,7 @@ class Dog extends Animal {
 console.log(new Dog("dogA", 6).getAge());
 * */
 
-/*
-// 数组去重 ES6 Set
+/* 数组去重 ES6 Set
 const source = [1, 2, 2, 3, 5, 5, 6];
 console.log([...new Set(source)]);
 // 这种方式（ES5），看下思路就行，filter的第 2、3 个参数
@@ -164,8 +157,7 @@ function unique(arr) {
 }
 * */
 
-/*
-// 数组拍平 flat
+/* 数组拍平 flat
 const source = [1, 2, [3, 4, 5, [6, 7, 8]]];
 // console.log(source.flat());
 // 如何手动实现？递归
@@ -179,20 +171,17 @@ const flatArray = array => {
 console.log(flatArray(source))
 * */
 
-// /*
-// 深浅拷贝
+/* 深浅拷贝
 const source = {
   a: 1,
   b: 2,
   c: true,
   d: /abc/g,
   e: function () {},
-  f: { f1: null },
+  f: { f1: null, f2: 1 },
   g: undefined,
   h: [1, 2, 3],
 };
-
-// console.log(JSON.parse(JSON.stringify(source)));
 
 function getRealType(obj) {
   return Object.prototype.toString.call(obj).split(" ")[1].replace("]", "").toLowerCase();
@@ -218,11 +207,15 @@ const shallowCopy = obj => {
   }
   return result;
 };
-const result = shallowCopy(source);
-console.log(result);
-source.h.push(4);
-console.log(result);
-// // 原版参考写法：
+
+const _ = require("lodash");
+var resultLodash = _.cloneDeep(source);
+const resultMine = shallowCopy(source);
+// source.h.push(4);
+// source.f.f2 = 4;
+console.log(resultLodash, resultMine);
+
+// // 原文参考写法：
 // const isObject = (target) => (typeof target === "object" || typeof target === "function") && target !== null;
 //
 // function deepClone(target, map = new WeakMap()) {
@@ -249,13 +242,4 @@ console.log(result);
 //     return target;
 //   }
 // }
-// * */
-
-/*
-// 发布订阅 EventEmitter
-class EventEmitter{
-    constructor() {
-
-    }
-}
 * */
