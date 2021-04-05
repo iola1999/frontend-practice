@@ -112,7 +112,7 @@ const debounceV1 = function (func, waitExec) {
   return function () {
     clearTimeout(timer);
     timer = setTimeout(() => {
-      func.apply(this, arguments); // 记一下 apply bind 等区别，还有 arguments
+      func.apply(this, arguments); // 记一下 apply bind call 等区别，还有 arguments
     }, waitExec);
   };
 };
@@ -132,7 +132,7 @@ const debounce = function (func, waitExec, immediate) {
       }, waitExec);
     } else {
       timer = setTimeout(() => {
-        func.apply(this, arguments); // 记一下 apply bind 等区别，还有 arguments
+        func.apply(this, arguments); // 记一下 apply bind call 等区别，还有 arguments
       }, waitExec);
     }
   };
@@ -245,4 +245,101 @@ function clg(a, b, c) {
 
 let partialClg = partial(clg, "_", 2);
 partialClg(1, 3); // 依次打印：1, 2, 3
+* */
+
+/* JSONP
+// 原理就是新建一个 script，封装生成 url，window[callbackName]，拿到数据后 removeChild
+* */
+
+/* 封装 AJAX
+// new XMLHttpRequest() .open .setRequestHeader  .onreadystatechange
+* */
+
+/* 实现 forEach
+Array.prototype.forEach2 = function (func, thisArg) {
+  // 还可以加上 this == null、typeof callback !== "function"的校验，throw new TypeError
+  // thisArg 可选。当执行回调函数 callback 时，用作 this 的值。
+  const backupArray = Object(this); // 防止被修改？
+  for (let i = 0; i < backupArray.length; i++) {
+    // 原文还提到了 .length >>> 0 ，无符号右移
+    // 是为了保证结果有意义（为数字类型），且为正整数，在有效的数组范围内（0 ～ 0xFFFFFFFF），且在无意义的情况下缺省值为0。
+    func.call(thisArg, backupArray[i], i, backupArray);
+  }
+};
+[1, 2, 3].forEach2(item => {
+  console.log(item);
+});
+* */
+
+/* 实现 map
+Array.prototype.map2 = function (func, thisArg) {
+  const backupArray = Object(this); // 防止被修改？
+  const result = [];
+  for (let i = 0; i < backupArray.length; i++) {
+    result.push(func.call(thisArg, backupArray[i], i, backupArray));
+  }
+  return result;
+};
+console.log([1, 2, 3].map2(item => item + "/"));
+// 顺便：["1", "2", "3"].map(parseInt)//返回应该是 [1, NaN, NaN]。注意参数 .map((item, index) => parseInt(item, index));
+* */
+
+/* 实现 filter
+Array.prototype.filter2 = function (func, thisArg) {
+  const backupArray = Object(this); // 防止被修改？
+  const result = [];
+  for (let i = 0; i < backupArray.length; i++) {
+    func.call(thisArg, backupArray[i], i, backupArray) && result.push(backupArray[i]);
+  }
+  return result;
+};
+console.log([1, 2, 3].filter2(item => item > 1));
+* */
+
+/* 实现 some
+Array.prototype.some2 = function (func, thisArg) {
+  const backupArray = Object(this); // 防止被修改？
+  let result = false;
+  for (let i = 0; i < backupArray.length; i++) {
+    if (func.call(thisArg, backupArray[i], i, backupArray)) {
+      result = true;
+      break;
+    }
+  }
+  return result;
+};
+console.log([1, 2, 3].some2(item => item > 9));
+* */
+
+/* 实现 reduce
+// TODO 不熟悉，也很少使用，先过了
+Array.prototype.reduce2 = function (func, initialValue) {
+
+};
+let arr = [2, 1, 4, 9];
+arr.reduce((acc, current) => acc + current);//16
+* */
+
+/* 实现 函数原型方法 call
+// 使用一个指定的 this 值和一个或多个参数来调用一个函数。
+Function.prototype.call2 = function (obj) {
+  obj = obj ? Object(obj) : window;
+  obj.fn = this; // this 是 dmeoFunc（即 call2 的调用源）
+  let args = [...arguments].slice(1); // 剩余的参数
+  let result = obj.fn(...args);
+  delete obj.fn;
+  return result;
+};
+
+function dmeoFunc(age, color) {
+  console.log(this.name, age, color);
+}
+
+function Cat(name) {
+  this.name = name;
+}
+
+const cat = new Cat("Tom");
+dmeoFunc.call(cat, 3, "yellow");
+dmeoFunc.call2(cat, 3, "yellow");
 * */
