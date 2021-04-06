@@ -188,20 +188,20 @@ function getRealType(obj) {
 }
 
 // 如何手动实现？递归。下面这个写法有些问题还没处理好 TODO:再看看吧，现在不想折腾了
-const shallowCopy = obj => {
+const deepCopy = obj => {
   let isArray = Array.isArray(obj);
   const result = isArray ? [] : {};
 
   if (isArray) {
     obj.forEach(item => {
       ["object", "array"].includes(getRealType(item))
-        ? result.push(shallowCopy(item))
+        ? result.push(deepCopy(item))
         : result.push(item);
     });
   } else {
     Object.keys(obj).forEach(key => {
       ["object", "array"].includes(getRealType(obj[key]))
-        ? (result[key] = shallowCopy(obj[key]))
+        ? (result[key] = deepCopy(obj[key]))
         : (result[key] = obj[key]);
     });
   }
@@ -210,7 +210,7 @@ const shallowCopy = obj => {
 
 const _ = require("lodash");
 var resultLodash = _.cloneDeep(source);
-const resultMine = shallowCopy(source);
+const resultMine = deepCopy(source);
 // source.h.push(4);
 // source.f.f2 = 4;
 console.log(resultLodash, resultMine);
