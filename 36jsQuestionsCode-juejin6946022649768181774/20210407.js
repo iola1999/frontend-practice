@@ -56,4 +56,11 @@ const cat = {
 };
 const boundFunc = dmeoFunc.bind(cat, 3);
 boundFunc("yellow");
+const boundFuncTest = dmeoFunc.bind2(cat, 3);
+boundFuncTest("yellow");
+new boundFunc // undefined 3 undefined
+new boundFuncTest // Tom 3 undefined
+
+// 可以看到 new 调用时 this 指向不太对 参考 https://www.cnblogs.com/echolun/p/12178655.html
+//
 // * */
