@@ -312,34 +312,15 @@ console.log([1, 2, 3].some2(item => item > 9));
 * */
 
 /* 实现 reduce
-// TODO 不熟悉，也很少使用，先过了
 Array.prototype.reduce2 = function (func, initialValue) {
-
+  let currentValue = initialValue;
+  const backupArray = Object(this);
+  for (let i = 0; i < backupArray.length; i++) {
+    currentValue = func(currentValue, backupArray[i]);
+  }
+  return currentValue;
 };
-let arr = [2, 1, 4, 9];
-arr.reduce((acc, current) => acc + current);//16
-* */
-
-/* 实现 函数原型方法 call
-// 使用一个指定的 this 值和一个或多个参数来调用一个函数。
-Function.prototype.call2 = function (obj) {
-  obj = obj ? Object(obj) : window;
-  obj.fn = this; // this 是 dmeoFunc（即 call2 的调用源）
-  let args = [...arguments].slice(1); // 剩余的参数
-  let result = obj.fn(...args);
-  delete obj.fn;
-  return result;
-};
-
-function dmeoFunc(age, color) {
-  console.log(this.name, age, color);
-}
-
-function Cat(name) {
-  this.name = name;
-}
-
-const cat = new Cat("Tom");
-dmeoFunc.call(cat, 3, "yellow");
-dmeoFunc.call2(cat, 3, "yellow");
+let arr = [1, 2, 3, 4];
+const result = arr.reduce2((acc, current) => acc + current, 0); //10
+console.log(result);
 * */
