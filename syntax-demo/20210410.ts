@@ -1,4 +1,6 @@
 // 今天看一下排序，很久没写了，都是直接 .sort
+// 还看了 ES6 的 Proxies，Vue3 的响应式就是基于它的。
+
 /** 冒泡
 // 时间 O(n^2)
 function bubbleSort(nums: number[]): number[] {
@@ -75,14 +77,15 @@ console.log(countSort(sourceArray));
 
  */
 
-// /**快速排序
+/**快速排序
 // 选一个基准值，开三个数组存分别存比基准值小的，一样的，大的。然后对小的大的数组递归调用，与中间的结果拼接起来
 // 平均时间复杂度 O(nlog n)，最坏O(n^2)，稳定性不如归并排序。随机取基准值的话是稳定的 O(nlog n)
+// 空间复杂度 O(log n)
 function quickSort(nums: number[]): number[] {
   if (nums.length < 2) {
     return nums;
   }
-  const pickOneValue = nums[0]; // 这个取值 等会再考虑。
+  const pickOneValue = nums[Math.floor(Math.random() * nums.length)]; // 随机取基准值
   const lower: number[] = [];
   const equal: number[] = [];
   const higher: number[] = [];
@@ -97,5 +100,64 @@ function quickSort(nums: number[]): number[] {
 }
 const sourceArray: number[] = [77, 11, 17, 10, 13, 15, 17, 13];
 console.log(quickSort(sourceArray));
+*/
 
-//  */
+// /** ES6 Proxies
+// https://es6.ruanyifeng.com/#docs/proxy
+// Proxy对象使你能够包装目标对象 通过这样可以拦截和重新定义该对象的基本操作。
+interface DetailInfo {
+  auther?: string;
+  buyUrl?: string;
+}
+interface Book {
+  name: string;
+  price?: number;
+  detailInfo: DetailInfo;
+}
+const book: Book = {
+  name: "深入浅出 Node.js",
+  // price: 25, // 稍后测试一下 新增的属性能否监听
+  detailInfo: {
+    auther: "Ming",
+  },
+};
+
+const handler: ProxyHandler<Book> = {
+  get: function (target: Book, prop: string | symbol, receiver): any {
+    console.info("[Proxy]访问", prop);
+    return target[prop];
+  },
+  set: function (target: Book, prop: string | symbol, value): boolean {
+    console.info("[Proxy]修改", prop, value);
+    if (prop === "price" && value <= 0) {
+      throw new RangeError("价格数值不正确");
+    }
+    target[prop] = value;
+    return true; // 这个似乎没有作用
+  },
+};
+
+const wrappedBook = new Proxy(book, handler);
+console.log("wrappedBook.name ->", wrappedBook.name);
+wrappedBook.price = 25;
+console.log("wrappedBook.price ->", wrappedBook.price);
+// wrappedBook.price = -1;
+// console.log("wrappedBook.price ->", wrappedBook.price);
+
+wrappedBook.detailInfo.auther = "Aaa"; // 只拦截到 detailInfo，用它实现响应式 也还是需要递归调用的
+
+// 测试一下 其他的 proxy 属性
+var twice: ProxyHandler<Function> = {
+  apply(target, ctx, args) {
+    // console.log(arguments);
+    return Reflect.apply(arguments[0], arguments[1], arguments[2]) * 2;
+  },
+};
+function sum(left: number, right: number) {
+  return left + right;
+}
+var sumProxied = new Proxy(sum, twice);
+sumProxied(1, 2); // (1+2)*2
+sumProxied.call(null, 5, 6); // call 实际上也是调用 apply？这一段没看明白
+sumProxied.apply(null, [7, 8]);
+// */
