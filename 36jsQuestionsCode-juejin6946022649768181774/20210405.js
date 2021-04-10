@@ -213,7 +213,7 @@ console.log(addCurry(1, 2)(3));
 * */
 
 /* 偏函数
-// const { partial } = require("lodash");
+// // const { partial } = require("lodash");
 
 // function add(a, b, c) {
 //   return a + b + c;
@@ -313,12 +313,12 @@ console.log([1, 2, 3].some2(item => item > 9));
 
 /* 实现 reduce
 Array.prototype.reduce2 = function (func, initialValue) {
-  let currentValue = initialValue;
-  const backupArray = Object(this);
-  for (let i = 0; i < backupArray.length; i++) {
-    currentValue = func(currentValue, backupArray[i]);
-  }
-  return currentValue;
+    const backupArray = Object(this);
+    let currentValue = initialValue || backupArray[0] || null;  // 允许不传第二个参数，不传时用第一项，且从第二项开始遍历
+    for (let i = initialValue ? 0 : 1; i < backupArray.length; i++) {
+        currentValue = func(currentValue, backupArray[i]);
+    }
+    return currentValue;
 };
 let arr = [1, 2, 3, 4];
 const result = arr.reduce2((acc, current) => acc + current, 0); //10

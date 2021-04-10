@@ -25,7 +25,7 @@ console.log(Object.prototype.toString.call2([]))
 * */
 
 /* 实现 函数原型方法 apply
-// apply 区别是 函数参数用数组传入。TODO：null等边界情况未考虑
+// apply 区别是 函数参数用数组传入。TODO：null 等边界情况未考虑
 Function.prototype.apply2 = function (obj) {
   obj = obj ? Object(obj) : window;
   obj.fn = this; // this 是 dmeoFunc（即 call2 的调用源）
