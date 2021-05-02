@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    class MyClassComponent extends React.Component {
+        state = {someBoolean: true}
+
+        render() {
+            return <h2 onClick={this.handleClick}>class component {String(this.state.someBoolean)}</h2>
+        }
+
+        handleClick = () => {
+            this.setState({someBoolean: !this.state.someBoolean})
+        }
+    }
+
+    ReactDOM.render(<div><MyClassComponent/><MyClassComponent/></div>, document.getElementById("test"))
+</script>
+</body>
+</html>

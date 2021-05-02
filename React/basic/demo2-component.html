@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    // function DemoFuncComponent() {
+    //     console.log(111)
+    //     return <h2>aaaaa</h2>
+    // }
+    // console.log(<DemoFuncComponent />)
+    // ReactDOM.render(<div><DemoFuncComponent/><DemoFuncComponent/></div>, document.getElementById("test"))
+    class MyClassComponent extends React.Component {
+        render() {
+            console.log('11111111')
+            return <h2>class component</h2>
+        }
+    }
+
+    ReactDOM.render(<div><MyClassComponent/><MyClassComponent/></div>, document.getElementById("test"))
+</script>
+</body>
+</html>

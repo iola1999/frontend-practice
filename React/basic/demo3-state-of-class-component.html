@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    class MyClassComponent extends React.Component {
+        constructor(props) {
+            console.log("constructor")
+            super(props);
+            this.state = {someBoolean: true}
+            this.handleClick = this.handleClick.bind(this)
+        }
+
+        render() {
+            console.log("render", this)
+            return <h2 onClick={this.handleClick}>class component {String(this.state.someBoolean)}</h2>
+            // 这里是直接将实例的方法给到外部，被调用时，this 的指向并不是实例对象。（类中的方法默认都是开启了严格模式的，this 指向 undefined）
+            // 可以通过 构造函数中 bind 处理
+        }
+
+        handleClick() {
+            console.log("handleClick", this)
+            // this.state.someBoolean = !this.state.someBoolean // 直接改没用
+            this.setState({someBoolean: !this.state.someBoolean})
+        }
+    }
+
+    ReactDOM.render(<div><MyClassComponent/><MyClassComponent/></div>, document.getElementById("test"))
+</script>
+</body>
+</html>
