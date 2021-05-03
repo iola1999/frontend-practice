@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    class MyClassComponent extends React.Component {
+        state = {
+            innerAge: 0,
+        }
+
+        // renderStringRef() {
+        //     const {name, age} = this.props
+        //     setTimeout(() => {
+        //         console.log(this.refs)
+        //         // 可以通过 this.refs 定位 dom
+        //         // 不过，字符串的 ref 效率有问题，推荐使用
+        //         // 1  回调ref  ref={node=>this.curNode = node}
+        //         // 2  创建 const ref = React.createRef();
+        //     }, 0)
+        //     return <h2 ref="testRef">class component {name} {this.state.innerAge}</h2>
+        // }
+
+        handleClick = () => {
+            this.setState({innerAge: this.state.innerAge + 1})
+        }
+
+        // renderInlineCallbackRef() {
+        //     const {name, age} = this.props
+        //     setTimeout(() => {
+        //         console.log(this.curNode)
+        //     }, 0)
+        //     // 以内联函数方式写的回调ref，在更新过程中会被调用两次，入参分别是 null、dom
+        //     return <h2 ref={node => {
+        //         console.log("callback ref", node);
+        //         this.curNode = node
+        //     }}
+        //                onClick={this.handleClick}>class
+        //         component {name} {this.state.innerAge}</h2>
+        // }
+
+        funcCallbackRef = node => {
+            console.log("funcCallback ref", node);
+            this.curNode = node
+        }
+
+        // render() {
+        //     const {name, age} = this.props
+        //     setTimeout(() => {
+        //         console.log(this.curNode)
+        //     }, 0)
+        //     // 使用class的绑定函数时，则只会第一次调用
+        //     return <h2 ref={this.funcCallbackRef}
+        //                onClick={this.handleClick}>class
+        //         component {name} {this.state.innerAge} </h2>
+        // }
+
+        // 尝试另一种，createRef
+        myRef = React.createRef()
+
+        render() {
+            const {name, age} = this.props
+            setTimeout(() => {
+                console.log(this.myRef.current) // 需要 .current
+            }, 0)
+            return <h2 ref={this.myRef}>class component {name} {this.state.innerAge} </h2>
+        }
+    }
+
+    const obj = {name: 'aaa', age: 11}
+    ReactDOM.render(<div><MyClassComponent {...obj}/></div>, document.getElementById("test"))
+</script>
+</body>
+</html>

@@ -23,12 +23,15 @@
             return <h2 onClick={this.handleClick}>class component {String(this.state.someBoolean)}</h2>
             // 这里是直接将实例的方法给到外部，被调用时，this 的指向并不是实例对象。（类中的方法默认都是开启了严格模式的，this 指向 undefined）
             // 可以通过 构造函数中 bind 处理
+            // 也可以 在回调中使用箭头函数。
+            // 也可以 实验性的 public class fields 语法。后面都是用这个
         }
 
         handleClick() {
             console.log("handleClick", this)
             // this.state.someBoolean = !this.state.someBoolean // 直接改没用
             this.setState({someBoolean: !this.state.someBoolean})
+            // 另外 setState 也可以接受函数 https://zh-hans.reactjs.org/docs/state-and-lifecycle.html#state-updates-may-be-asynchronous
         }
     }
 

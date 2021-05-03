@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    class View extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {
+                searchText: '', // 搜索词
+                isFilterOutofStock: false// 是否过滤掉无库存的
+            }
+        }
+
+        handleInputTextChange = (e) => {
+            this.setState({searchText: e.target.value})
+        }
+
+        handleCheckboxChange = (e) => {
+            this.setState({isFilterOutofStock: e.target.checked})    // 原来是需要用 checked
+        }
+
+        render() {
+            return (
+                <div>
+                    <SearchField {...this.state} onFilterTextChange={this.handleInputTextChange}
+                                 onCheckboxChange={this.handleCheckboxChange}/>
+                    <ProductTable {...this.state} stockInfo={stockInfo}/>
+                </div>
+            );
+        }
+
+    }
+
+    class SearchField extends React.Component {
+        render() {
+            return (
+                <div>
+                    <input value={this.props.searchText} onChange={this.props.onFilterTextChange}/>
+                    <br/>
+                    <label>
+                        <input type="checkbox" checked={this.props.isFilterOutofStock}
+                               onChange={this.props.onCheckboxChange}/>
+                        不展示空库存
+                    </label>
+                </div>
+            );
+        }
+    }
+
+    class ProductTable extends React.Component {
+        render() {
+            const rows = this.props.stockInfo.filter(stockItem => {
+                if (this.props.isFilterOutofStock && stockItem.stockCount === 0) {
+                    return false
+                }
+                if (this.props.searchText && stockItem.productName.indexOf(this.props.searchText) === -1) {
+                    return false
+                }
+                return true
+            }).map(item => <ProductRow productInfo={item} key={item.productId}/>)
+            return (
+                <table>
+                    <thead>
+                    <tr>
+                        <th>productId</th>
+                        <th>productName</th>
+                        <th>stockCount</th>
+                        <th>price</th>
+                    </tr>
+                    </thead>
+                    <tbody>{rows}</tbody>
+                </table>
+            );
+        }
+    }
+
+    class ProductRow extends React.Component {
+        render() {
+            const {productId, productName, stockCount, price} = this.props.productInfo
+            return (
+                <tr>
+                    <td>{productId}</td>
+                    <td>{productName}</td>
+                    <td>{stockCount}</td>
+                    <td>{price}</td>
+                </tr>
+            );
+        }
+    }
+
+
+    const stockInfo = [
+        {productId: 1, productName: "iPhone X", stockCount: 2089, price: 5999},
+        {productId: 2, productName: "Mi 11", stockCount: 0, price: 1999},
+        {productId: 3, productName: "iPhone XS Max", stockCount: 9989, price: 9999}]
+    ReactDOM.render(<View stockInfo={stockInfo}/>, document.getElementById("test"))
+</script>
+</body>
+</html>

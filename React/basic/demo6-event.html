@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    class MyClassComponent extends React.Component {
+        state = {
+            innerAge: 17,
+        }
+
+        handleBlur = (event) => {
+            console.log(event.target.value)
+            // 事件触发时，是通过事件委托的方式处理的（事件冒泡到组件最外层的 DOM），如果要读取事件源 DOM 的值，通过 event.target
+        }
+
+        render() {
+            return (<label>demo
+                <input ref={node => this.curNode = node}
+                       onBlur={this.handleBlur}
+                />
+            </label>)
+        }
+    }
+
+    const obj = {name: 'aaa', age: 11}
+    ReactDOM.render(<div><MyClassComponent {...obj}/></div>, document.getElementById("test"))
+
+</script>
+</body>
+</html>

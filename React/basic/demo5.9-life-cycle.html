@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    class MyClassComponent extends React.Component {
+        state = {
+            curTime: +new Date(),
+        }
+
+        handleClick = () => {
+            this.setState({innerAge: this.state.innerAge + 1})
+        }
+
+        componentDidMount() {
+            this.timer = setInterval(() => {
+                this.setState({curTime: +new Date()})
+            }, 160)
+        }
+
+        componentWillUnmount() {
+            clearInterval(this.timer)
+        }
+
+        render() {
+            return <h2>{this.state.curTime}</h2>
+        }
+    }
+
+    ReactDOM.render(<div><MyClassComponent/></div>, document.getElementById("test"))
+</script>
+</body>
+</html>

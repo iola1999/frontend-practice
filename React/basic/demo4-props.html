@@ -8,9 +8,17 @@
 <div id="test"></div>
 <script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
 <script type="text/babel">
     class MyClassComponent extends React.Component {
+        static propTypes = {
+            // 也可以定义完类后再设置约束属性。
+            name: PropTypes.string.isRequired   // 字符串、必传。另外，限制类型为函数时，关键字是 func
+        }
+        static defaultProps = {
+            age: 18
+        }
 
         render() {
             const {name, age} = this.props
@@ -21,8 +29,17 @@
     const obj = {name: 'aaa', age: 11}
     ReactDOM.render(<div><MyClassComponent {...obj}/></div>, document.getElementById("test"))
     // 展开运算符，是不能直接展开对象的。console.log(...obj) // wrong
-    // 不过，在构造字面量对象时，是可以展开的。const cloneObj = {...obj}
+    // 不过，在构造字面量对象时，是可以展开的。const cloneObj = {...obj}。还可以修改、合并部分值。{...obj, name: 'bbb'}
     // 不过，这里其实只是语法糖
+
+    // function MyFuncComponent(props) {
+    //     return (
+    //         <h2>{props.name}</h2>
+    //     )
+    // }
+    // // 然后可以对函数组件设置 props 校验属性 MyFuncComponent.propTypes
+    //
+    // ReactDOM.render(<div><MyFuncComponent {...obj}/></div>, document.getElementById("test"))
 </script>
 </body>
 </html>
