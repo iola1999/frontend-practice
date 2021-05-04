@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    class MyClassComponent extends React.Component {
+        state = {
+            value: "123",
+            chooseValue: undefined,
+        }
+        handleSubmit = (e) => {
+            e.preventDefault();
+            console.log(e)
+        }
+        handleChange = (e) => {
+            this.setState({value: e.target.value})
+        }
+        handleSelectChange = (e) => {
+            this.setState({chooseValue: e.target.value})
+        }
+
+        render() {
+            return (
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        名字:
+                        <input type="text" value={this.state.value} onChange={this.handleChange}/>
+                    </label>
+
+                    <label>
+                        选择你喜欢的风味:
+                        <select value={this.state.chooseValue} onChange={this.handleSelectChange}>
+                            <option value="grapefruit">葡萄柚</option>
+                            <option value="lime">酸橙</option>
+                            <option value="coconut">椰子</option>
+                            <option value="mango">芒果</option>
+                        </select>
+                    </label>
+                    <input type="submit" value="提交"/>
+                </form>
+            );
+        }
+
+    }
+
+    ReactDOM.render(<div><MyClassComponent/></div>, document.getElementById("test"))
+
+</script>
+</body>
+</html>

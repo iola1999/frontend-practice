@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    class Mouse extends React.Component {
+        state = {
+            x: 0,
+            y: 0
+        }
+
+        handleMouseMove = (e) => {
+            this.setState({
+                x: e.clientX,
+                y: e.clientY,
+            })
+        }
+
+        render() {
+            // console.log(this.props)
+            return (
+                <div style={{width: '400px', height: '400px', backgroundColor: 'gray'}}
+                     onMouseMove={this.handleMouseMove}>
+                    {this.props.children(this.state)}
+                </div>
+            );
+        }
+    }
+
+    Mouse.propTypes = {
+        children: PropTypes.func.isRequired
+    };
+
+
+    // class View extends React.Component {
+    //     render() {
+    //         return (
+    //             <Mouse>
+    //                 {(state) => <div>{state.x + state.y}</div>}
+    //             </Mouse>
+    //         );
+    //     }
+    // }
+
+    function withMouse(Component) {
+        // 这里必须返回一个组件，而不是组件生成好的 VDOM
+        return class extends React.Component {
+            render() {
+                return <Mouse>{(state) => <Component mouseState={state}/>}</Mouse>
+                // 这内部不能有空格......不然 children 是个数组。。。
+            }
+        }
+    }
+
+    class View extends React.Component {
+        render() {
+            return <span>{this.props.mouseState.x + this.props.mouseState.y}</span>
+        }
+    }
+
+    const Warpped = withMouse(View)
+    const VDom = (<Warpped/>)
+    ReactDOM.render(VDom, document.getElementById("test"))
+</script>
+</body>
+</html>

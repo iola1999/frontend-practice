@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    class MyClassComponent extends React.Component {
+        state = {
+            count: 0,
+        }
+
+        handleClick = () => {
+            this.setState({count: this.state.count + 1})
+        }
+
+
+        static getDerivedStateFromProps(nextProps, prevState) {
+            console.log("getDerivedStateFromProps", nextProps, prevState)
+            return null;
+        }
+
+        getSnapshotBeforeUpdate(prevProps, prevState) {
+            console.log("getSnapshotBeforeUpdate", prevProps, prevState)
+            return null
+        }
+        componentDidUpdate(prevProps, prevState) {
+            console.log("componentDidUpdate", prevProps, prevState)
+        }
+
+
+
+
+        render() {
+            return (<div>
+                    <h2>{this.state.count}</h2>
+                    <button onClick={this.handleClick}>click</button>
+                </div>
+            )
+        }
+
+
+    }
+
+    ReactDOM.render(<div><MyClassComponent id={1}/></div>, document.getElementById("test"))
+</script>
+</body>
+</html>

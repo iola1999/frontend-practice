@@ -20,19 +20,50 @@
             this.setState({innerAge: this.state.innerAge + 1})
         }
 
+        unmount = () => {
+            // 还可以主动卸载组件
+            ReactDOM.unmountComponentAtNode(document.getElementById("test"))
+        }
+
+        componentWillMount() {
+
+        }
+
+        render() {
+            return (<div>
+                    <h2>{this.state.curTime}</h2>
+                    <button onClick={this.unmount}>unmount</button>
+                </div>
+            )
+        }
+
         componentDidMount() {
             this.timer = setInterval(() => {
                 this.setState({curTime: +new Date()})
-            }, 160)
+            }, 10000)
         }
+
+        // 更新阶段，自身 setState，或者父组件重新 render
+        shouldComponentUpdate(nextProps, nextState) {
+            console.log("shouldComponentUpdate", nextProps, nextState)
+            return true;
+        }
+
+        componentWillUpdate(nextProps, nextState) {
+            console.log("componentWillUpdate", nextProps, nextState)
+
+        }
+
+        componentDidUpdate(prevProps, prevState) {
+            console.log("componentDidUpdate", prevProps, prevState)
+        }
+
 
         componentWillUnmount() {
             clearInterval(this.timer)
         }
 
-        render() {
-            return <h2>{this.state.curTime}</h2>
-        }
+
     }
 
     ReactDOM.render(<div><MyClassComponent/></div>, document.getElementById("test"))

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    // 就这啊..........
+    const F2C = (F) => (5 / 9 * (F - 32)).toFixed(3)
+    const C2F = (C) => (C * 9 / 5 + 32).toFixed(3)
+
+    class View extends React.Component {
+        state = {
+            curCNum: 0
+        }
+
+        onCNumberChange = (e) => {
+            this.setState({curCNum: e.target.value})
+        }
+
+        onFNumberChange = (e) => {
+            this.setState({curCNum: F2C(e.target.value)})
+        }
+
+        render() {
+            return (
+                <div>
+                    <CNumberInput curCNum={this.state.curCNum} onCNumberChange={this.onCNumberChange}/>
+                    <FNumberInput curCNum={this.state.curCNum} onFNumberChange={this.onFNumberChange}/>
+                </div>
+            );
+        }
+
+    }
+
+    class CNumberInput extends React.Component {
+        render() {
+            return (
+                <label>
+                    摄氏度：<input type="number" value={this.props.curCNum} onChange={this.props.onCNumberChange}/>
+                </label>
+            );
+        }
+    }
+
+    class FNumberInput extends React.Component {
+        render() {
+            return (
+                <label>
+                    华氏度<input type="number" value={C2F(this.props.curCNum)} onChange={this.props.onFNumberChange}/>
+                </label>
+            );
+        }
+    }
+
+    ReactDOM.render(<View/>, document.getElementById("test"))
+</script>
+</body>
+</html>

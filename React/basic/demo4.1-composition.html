@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    class View extends React.Component {
+        state = {
+            age: 1
+        }
+
+        render() {
+            return (
+                <div>
+                    {this.props.firstDiv}
+                    {this.props.children}
+                    {this.props.someRenderProps(this.state)}
+                </div>
+            );
+        }
+    }
+
+
+    class RenderInProps extends React.Component {
+        // 使用 Render Props 来解决横切关注点（Cross-Cutting Concerns）
+        // https://zh-hans.reactjs.org/docs/render-props.html#use-render-props-for-cross-cutting-concerns
+        render() {
+            return (
+                <div>
+                    {JSON.stringify(this.props.state)}
+                </div>
+            );
+        }
+    }
+
+    const VDom = (<View firstDiv={<div>first</div>} someRenderProps={state => <RenderInProps state={state}/>}>
+        <div>1</div>
+        <div>2</div>
+    </View>)
+    // Render Props，也可以使用 children 这个 prop，这样甚至可以直接写在内部，如：
+    /*
+    <Mouse>
+      {mouse => (
+        <p>鼠标的位置是 {mouse.x}，{mouse.y}</p>
+      )}
+    </Mouse>
+    它等于：
+    <Mouse children={mouse => (
+      <p>鼠标的位置是 {mouse.x}，{mouse.y}</p>
+    )}/>
+    * */
+    ReactDOM.render(VDom, document.getElementById("test"))
+</script>
+</body>
+</html>

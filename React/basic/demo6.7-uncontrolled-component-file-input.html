@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    class MyClassComponent extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.fileInput = React.createRef();
+        }
+
+        handleSubmit = (event) => {
+            event.preventDefault();
+            console.log(this.fileInput.current.files[0].name)
+        }
+
+        handleChange = (e) => {
+            console.log(this.fileInput.current.files)
+        }
+
+        render() {
+            return (
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Upload file:
+                        <input type="file" ref={this.fileInput} onChange={this.handleChange}/>
+                    </label>
+                    <br/>
+                    <button type="submit">Submit</button>
+                </form>
+            );
+        }
+    }
+
+    ReactDOM.render(<div><MyClassComponent/></div>, document.getElementById("test"))
+
+</script>
+</body>
+</html>
