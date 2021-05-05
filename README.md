@@ -6,7 +6,7 @@
 
     - `works-by-day` 算是笔记
 
-    - `react-basic` 熟悉 Vue 后，学一下 React
+    - `react-basic` 学一下 React
 
     - `Tailwind` 尝试下 Tailwind
 
