@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    // 如何记忆计算结果？
+    //     useMemo Hook 允许你通过「记住」上一次计算结果的方式在多次渲染的之间缓存计算结果：
+    // const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
+    // 这行代码会调用 computeExpensiveValue(a, b)。但如果依赖数组 [a, b] 自上次赋值以来没有改变过，useMemo 会跳过二次调用，只是简单复用它上一次返回的值。
+    // 记住，传给 useMemo 的函数是在渲染期间运行的。不要在其中做任何你通常不会在渲染期间做的事。举个例子，副作用属于 useEffect，而不是 useMemo。
+
+    // 方便起见，useMemo 也允许你跳过一次子节点的昂贵的重新渲染：
+
+    function Child1({a}) {
+        return (
+            <div>{a}
+            </div>
+        )
+    }
+
+    function Child2({b}) {
+        return (
+            <div>{b}
+            </div>
+        )
+    }
+
+    function Parent({a, b}) {
+        // Only re-rendered if `a` changes:
+        const child1 = React.useMemo(() => <Child1 a={a}/>, [a]);
+        // Only re-rendered if `b` changes:
+        const child2 = React.useMemo(() => <Child2 b={b}/>, [b]);
+        return (
+            <div>
+                {child1}
+                {child2}
+            </div>
+        )
+    }
+
+    // 注意这种方式在循环中是无效的，因为 Hook 调用 不能 被放在循环中。但你可以为列表项抽取一个单独的组件，并在其中调用 useMemo。
+
+    const VDom = (<Parent a={1} b={2}/>)
+    ReactDOM.render(VDom, document.getElementById("test"))
+</script>
+</body>
+</html>

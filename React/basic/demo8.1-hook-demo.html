@@ -45,6 +45,16 @@
 
     const VDom = (<Example/>)
     ReactDOM.render(VDom, document.getElementById("test"))
+    // 如何模拟React的生命周期
+    // constructor：函数组件不需要构造函数。你可以通过调用 useState 来初始化 state。
+    // componentDidMount：通过 useEffect 传入第二个参数为[]实现。
+    // componentDidUpdate：通过 useEffect 传入第二个参数为空或者为值变动的数组。
+    // componentWillUnmount：主要用来清除副作用。通过 useEffect 函数 return 一个函数来模拟。
+    // shouldComponentUpdate：你可以用 React.memo 包裹一个组件来对它的 props 进行浅比较。来模拟是否更新组件。
+    // componentDidCatch and getDerivedStateFromError：目前还没有这些方法的 Hooks 等价写法，但很快会加上。
+
+    // 一篇看起来不错的 hook 上手：https://github.com/myprelude/React-Hook-Library
+    // 另一篇 https://juejin.cn/post/6844903938018263048
 </script>
 </body>
 </html>

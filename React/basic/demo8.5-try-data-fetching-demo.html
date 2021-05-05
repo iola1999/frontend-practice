@@ -24,15 +24,16 @@
                 const result = await axios('https://hn.algolia.com/api/v1/search?query=' + query);
                 console.log("is ignore?", ignore)
                 // 噢....原来是用于判断上一次搜索结果有没有结束的......
-                // 如果当前组件 query 改变了，会调用清除 effect 的方法，设置 ignore 为 true，拿到结果后就忽略了。。。这思路......
+                // 如果当前组件 query 改变了，重新渲染组件前会调用清除 effect 的方法，设置 ignore 为 true，拿到结果后就忽略了。。。这思路......
                 if (!ignore) setData(result.data);
             }
 
             fetchData();
             return () => {
                 ignore = true;
+                // 通过 effect 内部的局部变量来处理无序的响应
             }
-        }, [query]);
+        }, [query]);    // 这个 query 是必须的，否则 data 改变也会触发 effect，就死循环了
 
         return (
             <div>
