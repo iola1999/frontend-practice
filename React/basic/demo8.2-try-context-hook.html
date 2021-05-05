@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    const themes = {
+        light: {
+            foreground: "#000000",
+            background: "#eeeeee"
+        },
+        dark: {
+            foreground: "#ffffff",
+            background: "#222222"
+        }
+    };
+
+    const ThemeContext = React.createContext(themes.light);
+
+    function App() {
+        return (
+            <ThemeContext.Provider value={themes.dark}>
+                <Toolbar/>
+            </ThemeContext.Provider>
+        );
+    }
+
+    function Toolbar(props) {
+        return (
+            <div>
+                <ThemedButton/>
+            </div>
+        );
+    }
+
+    function ThemedButton() {
+        const theme = React.useContext(ThemeContext);
+        return (
+            <button style={{background: theme.background, color: theme.foreground}}>
+                I am styled by theme context!
+            </button>
+        );
+    }
+
+    const VDom = (<App/>)
+    ReactDOM.render(VDom, document.getElementById("test"))
+</script>
+</body>
+</html>

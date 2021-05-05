@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    function Example() {
+        const [count, setCount] = React.useState(0);
+        // setCount(prevCount => prevCount + 1) 这个 set 还可以接受函数，例如：
+        // 展开 「...state」 以确保我们没有 「丢失」 width 和 height： setState(state => ({ ...state, left: e.pageX, top: e.pageY }));
+        // 还可以惰性求值，此函数只在初始渲染时被调用
+        const someExpensiveComputation = (type) => {
+            console.log("call someExpensiveComputation", type)
+            return 1;
+        }
+        const [state1, setState1] = React.useState(() => {
+            return someExpensiveComputation("lazy");
+        });
+        const [state2, setState2] = React.useState(someExpensiveComputation("direct")); // 这样写，每次更新时都会调用。神奇啊
+
+        const [anotherNumber, setAnotherNumber] = React.useState(999);
+        // 相当于 componentDidMount 和 componentDidUpdate:
+        React.useEffect(() => {
+            // 使用浏览器的 API 更新页面标题
+            document.title = `You clicked ${count} times`;
+        }, [count]);
+        // 副作用函数还可以通过返回一个函数来指定如何“清除”副作用。React 会在组件销毁时调用。
+        // 如果某些特定值在两次重渲染之间没有发生变化，你可以通知 React 跳过对 effect 的调用，只要传递数组作为 useEffect 的第二个可选参数即可
+        return (
+            <div>
+                <p>{count}</p>
+                <p>{anotherNumber}</p>
+                <button onClick={(e) => setCount(count + 1)}>click</button>
+            </div>
+        )
+        // 可以多看看这个 https://zh-hans.reactjs.org/docs/hooks-faq.html
+    }
+
+    const VDom = (<Example/>)
+    ReactDOM.render(VDom, document.getElementById("test"))
+</script>
+</body>
+</html>

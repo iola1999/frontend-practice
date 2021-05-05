@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script type="text/babel">
+    // function Counter() {
+    //     const [count, setCount] = React.useState(0);
+    //
+    //     const prevCountRef = React.useRef();
+    //     React.useEffect(() => {
+    //         prevCountRef.current = count;
+    //     });
+    //     const prevCount = prevCountRef.current;
+    //
+    //     return (<div>
+    //         <h1>Now: {count}</h1>
+    //         <h1>before: {prevCount}</h1>
+    //         <button onClick={() => setCount(count + 1)}>click</button>
+    //     </div>);
+    // }
+    // 抽取 自定义 hook
+    function Counter() {
+        const [count, setCount] = React.useState(0);
+        const prevCount = usePrevious(count);
+        return (<div>
+            <h1>Now: {count}</h1>
+            <h1>before: {prevCount}</h1>
+            <button onClick={() => setCount(count + 1)}>click</button>
+        </div>);
+    }
+
+    function usePrevious(value) {
+        const ref = React.useRef();
+        React.useEffect(() => {
+            ref.current = value;
+        });
+        return ref.current;
+    }
+
+    // 注意看这是如何作用于 props， state，或任何其他计算出来的值的。
+    // const [count, setCount] = useState(0);
+    // const calculation = count + 100;
+    // const prevCalculation = usePrevious(calculation);
+
+    const VDom = (<Counter/>)
+    ReactDOM.render(VDom, document.getElementById("test"))
+</script>
+</body>
+</html>

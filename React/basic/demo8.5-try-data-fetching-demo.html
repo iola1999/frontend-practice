@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+</head>
+<body>
+<div id="test"></div>
+<script src="https://cdn.bootcdn.net/ajax/libs/react/17.0.2/umd/react.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/react-dom/17.0.2/umd/react-dom.development.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/prop-types/15.7.2/prop-types.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/babel-standalone/7.0.0-beta.3/babel.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+<script type="text/babel">
+    function View() {
+        const [data, setData] = React.useState({hits: []});
+        const [query, setQuery] = React.useState('react');
+
+        React.useEffect(() => {
+            console.log("call effect")
+            let ignore = false;
+
+            async function fetchData() {
+                const result = await axios('https://hn.algolia.com/api/v1/search?query=' + query);
+                console.log("is ignore?", ignore)
+                // 噢....原来是用于判断上一次搜索结果有没有结束的......
+                // 如果当前组件 query 改变了，会调用清除 effect 的方法，设置 ignore 为 true，拿到结果后就忽略了。。。这思路......
+                if (!ignore) setData(result.data);
+            }
+
+            fetchData();
+            return () => {
+                ignore = true;
+            }
+        }, [query]);
+
+        return (
+            <div>
+                <input value={query} onChange={e => setQuery(e.target.value)}/>
+                <ul>
+                    {data.hits.map(item => (
+                        <li key={item.objectID}>
+                            <a href={item.url}>{item.title}</a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        );
+    }
+
+    const VDom = (<View/>)
+    ReactDOM.render(VDom, document.getElementById("test"))
+</script>
+</body>
+</html>
