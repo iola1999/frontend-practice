@@ -1,0 +1,17 @@
+{
+  "name": "vanilla",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "postcss css/style.css -o dist/style.css --watch",
+    "build": "set NODE_ENV=production&&postcss css/style.css -o dist/style.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^2.1.2"
+  }
+}
