@@ -57,3 +57,8 @@ observe(library);
 library.book1.name = "vue权威指南"; // 属性name已经被监听了，现在值为：“vue权威指南”
 library.book2 = "没有此书籍"; // 属性book2已经被监听了，现在值为：“没有此书籍”
 // 如果直接替换整个 book1 会怎样
+
+// 参考资料
+// https://www.cnblogs.com/canfoo/p/6891868.html
+// https://zheyaoa.github.io/2019/09/07/computed/
+
