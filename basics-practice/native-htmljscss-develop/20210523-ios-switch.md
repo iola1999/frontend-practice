@@ -13,9 +13,9 @@
 ```scss
 $button-width: 500px;
 $button-height: 295px;
-$toggle-diameter: 255px;
-$button-toggle-offset: calc($button-height-$toggle-diameter) / 2;
-$toggle-shadow-offset: 10px;
+$toggle-diameter: 255px;  // 可以点击的圆圈宽度
+$button-toggle-offset: ($button-height - $toggle-diameter) / 2; // 点击区域距左边间隙
+$toggle-shadow-offset: 10px;  // 点击区域的阴影
 $toggle-wider: 333px;
 $color-grey: #E9E9E9;
 $color-dark-grey: #39393D;
@@ -32,7 +32,12 @@ span {
   &::after {
     content: '';
     display: inline-block;
-    
+    width: $toggle-diameter;
+    height: $toggle-diameter;
+    background-color: #fff;
+    border-radius: $toggle-diameter / 2;
+    position: absolute;
+    top: $button-toggle-offset;
   }
 }
 
@@ -42,6 +47,5 @@ body {
   align-items: center;
   min-height: 100vh;
 }
-
 
 ```
