@@ -31,14 +31,41 @@
 你可以设计时间复杂度为 O(n2) 的解决方案吗？
 你能将算法的时间复杂度降低到 O(n log(n)) 吗?
 * */
+
+// function lengthOfLIS(nums: number[]): number {
+//   const dp = new Array(nums.length).fill(1);
+//   let result = 1;
+//   // 代表到 nums[index] 为止此前最大的最大递增序列
+//   for (let i = 0; i < nums.length; i++) {
+//     // 遍历这个数之前的值，更新 dp
+//     for (let j = 0; j < i; j++) {
+//       if (nums[j] < nums[i]) {
+//         dp[i] = Math.max(dp[j] + 1, dp[i]);
+//       }
+//     }
+//     result = Math.max(result, dp[i]);
+//   }
+//   return result;
+// }
+
+function testRec(index) {
+
+}
+
 function lengthOfLIS(nums: number[]): number {
-  let maxCount: number = 1;
-  let leftIdx = 0,
-    rightIdx = 0;
-  while (rightIdx < nums.length) {
-    rightIdx += 1;
+  const dp = new Array(nums.length).fill(1);
+  let result = 1;
+  // 代表到 nums[index] 为止此前最大的最大递增序列
+  for (let i = 0; i < nums.length; i++) {
+    // 遍历这个数之前的值，更新 dp
+    for (let j = 0; j < i; j++) {
+      if (nums[j] < nums[i]) {
+        dp[i] = Math.max(dp[j] + 1, dp[i]);
+      }
+    }
+    result = Math.max(result, dp[i]);
   }
-  return maxCount;
+  return result;
 }
 
 console.log(lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18])); // 4  [2,3,7,101]
