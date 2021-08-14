@@ -1,9 +1,5 @@
-const aaa = [1, 2, 3, 4, 5]
-
-for (let i = 0; i < aaa.length; i++) {
-    console.log(i, aaa[i])
-    if (aaa[i] === 2) {
-        aaa.splice(i, 1)
-        i--
-    }
+function myNew(Parent, ...rest) {
+    const child = Object.create(Parent.prototype)
+    const result = Parent.call(child, ...rest)
+    return (typeof result) === 'object' ? result : child
 }
