@@ -46,21 +46,37 @@
 // Related Topics 数组 二分查找 动态规划
 // 👍 1774 👎 0
 
+// function lengthOfLIS(nums: number[]): number {
+//     const dp = new Array(nums.length).fill(1);
+//     let result = 1;
+//     // 代表到 nums[index] 为止此前最大的最大递增序列
+//     for (let i = 0; i < nums.length; i++) {
+//         // 遍历这个数之前的值，更新 dp
+//         for (let j = 0; j < i; j++) {
+//             if (nums[j] < nums[i]) {
+//                 dp[i] = Math.max(dp[j] + 1, dp[i]);
+//             }
+//         }
+//         result = Math.max(result, dp[i]);
+//     }
+//     return result;
+// };
 
 //leetcode submit region begin(Prohibit modification and deletion)
 function lengthOfLIS(nums: number[]): number {
-    const dp = new Array(nums.length).fill(1);
-    let result = 1;
-    // 代表到 nums[index] 为止此前最大的最大递增序列
-    for (let i = 0; i < nums.length; i++) {
-        // 遍历这个数之前的值，更新 dp
-        for (let j = 0; j < i; j++) {
-            if (nums[j] < nums[i]) {
-                dp[i] = Math.max(dp[j] + 1, dp[i]);
-            }
-        }
-        result = Math.max(result, dp[i]);
+  const dp = new Array(nums.length).fill(1);
+  let result = 1;
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (nums[j] < nums[i]) {
+        dp[i] = Math.max(dp[j] + 1, dp[i]); // [1,2(j),.......9(i),10]
+      }
     }
-    return result;
-};
+    result = Math.max(result, dp[i]);
+  }
+  return result;
+}
+
 //leetcode submit region end(Prohibit modification and deletion)
+
+console.log(lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]));

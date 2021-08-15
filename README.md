@@ -20,4 +20,4 @@
 
 测试能不能跳转过去：
 
-[/basics-pratice/works-by-day/](/basics-pratice/works-by-day/)
+[basics-pratice/works-by-day/](basics-pratice/works-by-day/)
