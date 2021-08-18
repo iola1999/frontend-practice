@@ -4,7 +4,7 @@
 
 + `/basics-pratice/` 基本上都是基础知识、语法
 
-    - `works-by-day/` 算是笔记
+    - `works-by-day/` 算是笔记，目前更新较多
 
     - `react-basic/` 学 React 的笔记
 
@@ -17,7 +17,3 @@
     - `leetcode/`  力扣记录
 
     - `myVue/`  试试写个运行时编译的 vue
-
-测试能不能跳转过去：
-
-[basics-pratice/works-by-day/](basics-pratice/works-by-day/)

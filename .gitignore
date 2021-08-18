@@ -4,3 +4,4 @@ package-lock.json
 .idea
 dist
 /projects/leetcode-plugin/leetcode/editor/cn/doc/
+/projects/leetcode-plugin/leetcode/editor/cn/all.json
