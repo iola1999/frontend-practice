@@ -4,7 +4,7 @@
 
 + `/basics-pratice/` 基本上都是基础知识、语法
 
-    - [works-by-day](basics-practice/works-by-day/interview.md) 算是笔记，目前更新较多
+    - [works-by-day](basics-practice/works-by-day/index.md) 算是笔记，目前更新较多
 
     - `react-basic/` 学 React 的笔记
 

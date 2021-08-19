@@ -39,6 +39,19 @@ class TreeNode {
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-function levelOrder(root: TreeNode | null): number[][] {}
+function levelOrder(root: TreeNode | null): number[][] {
+  const res = []
+  if(!root) return []
+  const queue = [root]
+  while(queue.length){
+    // 这一层的
+    const level = []
+    for(let i=0;i<queue.length;i++){
+
+    }
+    res.push(level)
+
+  }
+}
 
 //leetcode submit region end(Prohibit modification and deletion)
