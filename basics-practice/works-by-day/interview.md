@@ -38,15 +38,24 @@ TODO: 这块补充到简历里
 
 这一块常常更新下。
 
-webcontainer 在浏览器端运行 node.js，WebAssembly 实现
+字节技术 阿里技术一堆团队技术分享公众号，思否 掘金博文
 
-vue 3.2
++ webcontainer 在浏览器端运行 node.js，WebAssembly 实现
 
-typcscript 4.
++ vue 3.2
+    - script setup
+    - style v-bind
+    - v-memo 指令，可实现对部分模板树的记忆功能。不会重新创建 VNode，并且会重新使用前一个元素，除非 v-memo 的条件发生变化
+    - $ref()避免在更新 ref 值时需要使用.value
+    - Effect scope API，主要是给库作者使用
+    - .prop 和 .attr 修饰符。通过自定义属性存储变量，避免暴露数据，防止污染 HTML 结构。v-bind 默认绑定到 DOM 节点的 attribute 上，使用.prop修饰符后，设置的自定义属性不会在渲染后的
+      HTML 标签里显示,而.attr修饰符则刚好相反
+    - Effect scope API，主要是给库作者使用
+    - defineCustomElement， WebComponent 支持
 
-naiveui 这个组件库里各种新技术
++ typcscript 4.
 
-字节技术等团队技术分享公众号，思否 掘金博文
++ naiveui 这个组件库里各种新技术
 
 ## 认为自己有什么亮点
 
