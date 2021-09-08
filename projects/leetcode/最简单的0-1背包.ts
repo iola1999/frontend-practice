@@ -4,7 +4,7 @@ function maxBagValue(weights: number[], values: number[], bagWight): number {
     dp[i] = new Array(bagWight + 1).fill(0);
   }
   console.table(dp);
-  // 初始化 i=0
+  // 初始化 i=0，只用第一个物品
   for (let j = bagWight; j > 0; j--) {
     dp[0][j] = dp[0][j - 1] + values[0];
   }
