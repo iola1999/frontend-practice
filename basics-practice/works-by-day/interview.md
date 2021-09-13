@@ -142,5 +142,9 @@ ECMA 近期动态 [https://mp.weixin.qq.com/s/tMo8vG1obDpbr4oZ_-QtuA](https://mp
 
 不要越级反馈
 
+### 职业发展
 
+在多年的职业生涯中积累了技术的广度之后，再努力一步把自己的技能往纵深发展，成为垂直领域资深中的资深
+
+Coding 到八十岁
 

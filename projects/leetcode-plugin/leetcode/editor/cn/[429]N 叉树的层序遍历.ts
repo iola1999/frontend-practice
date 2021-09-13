@@ -67,7 +67,8 @@ function levelOrder(root: Node | null): number[][] {
     for (let i = 0; i < bakLength; i++) {
       const cur = queue.shift();
       level.push(cur.val);
-      cur.children.forEach(item => queue.push(item));
+      // cur.children.forEach(item => queue.push(item));
+      queue.push(...cur.children);
     }
     res.push(level);
   }
