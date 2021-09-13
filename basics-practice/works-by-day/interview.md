@@ -42,19 +42,20 @@
 
 这一块常常更新下。
 
+ECMA 近期动态 [https://mp.weixin.qq.com/s/tMo8vG1obDpbr4oZ_-QtuA](https://mp.weixin.qq.com/s/tMo8vG1obDpbr4oZ_-QtuA)
+
 字节技术 阿里技术一堆团队技术分享公众号，思否 掘金博文
 
 + webcontainer 在浏览器端运行 node.js，WebAssembly 实现
 
 + vue 3.2
-    - script setup
-    - style v-bind
-    - v-memo 指令，可实现对部分模板树的记忆功能。不会重新创建 VNode，并且会重新使用前一个元素，除非 v-memo 的条件发生变化
-    - $ref()避免在更新 ref 值时需要使用.value
-    - Effect scope API，主要是给库作者使用
-    - .prop 和 .attr 修饰符。通过自定义属性存储变量，避免暴露数据，防止污染 HTML 结构。v-bind 默认绑定到 DOM 节点的 attribute 上，使用.prop修饰符后，设置的自定义属性不会在渲染后的
-      HTML 标签里显示,而.attr修饰符则刚好相反
-    - Effect scope API，主要是给库作者使用
+  - script setup
+  - style v-bind
+  - v-memo 指令，可实现对部分模板树的记忆功能。不会重新创建 VNode，并且会重新使用前一个元素，除非 v-memo 的条件发生变化
+  - $ref()避免在更新 ref 值时需要使用.value
+  - Effect scope API，主要是给库作者使用
+  - .prop 和 .attr 修饰符。
+  - Effect scope API，主要是给库作者使用
     - defineCustomElement， WebComponent 支持
 
 + typcscript 4.
@@ -69,11 +70,19 @@
 
 ”关注效率，对于低效的工作绝不容忍，我们致力于用工具提高团队效率。“
 
-### 技术新旧的看法
+## 技术新旧的看法
 
 不是新的好旧的过时，选择的时候应该看新的能带来什么优势有怎样的风险。
 
-## HR 面非技术问题
+## 前端对算法的需求？
+
+底层库对算法有较强需求。日常开发中，设计模式和一些巧妙的实现方式比较有用（例如主推 MC 消息来判断增删改表格数据）
+
+## 有什么想反问的？
+
+[https://coffe1891.gitbook.io/frontend-hard-mode-interview/0/0.1.6](https://coffe1891.gitbook.io/frontend-hard-mode-interview/0/0.1.6)
+
+## 非技术问题
 
 ### 发展规划
 
@@ -95,7 +104,7 @@
 
 具备团队合作精神，有较强的自学能力和好奇心，乐于了解新技术，乐于接受挑战性的工作。
 
-### 个性上的有点
+### 个性上的优点
 
 比较正能量；执行力强，能钻研技术
 
