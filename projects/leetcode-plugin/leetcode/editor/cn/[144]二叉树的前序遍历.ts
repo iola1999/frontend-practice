@@ -52,37 +52,53 @@
 // Related Topics 栈 树 深度优先搜索 二叉树
 // 👍 626 👎 0
 class TreeNode {
-    val: number
-    left: TreeNode | null
-    right: TreeNode | null
+  val: number;
+  left: TreeNode | null;
+  right: TreeNode | null;
 
-    constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-        this.val = (val === undefined ? 0 : val)
-        this.left = (left === undefined ? null : left)
-        this.right = (right === undefined ? null : right)
-    }
+  constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
+    this.val = val === undefined ? 0 : val;
+    this.left = left === undefined ? null : left;
+    this.right = right === undefined ? null : right;
+  }
 }
+
 //leetcode submit region begin(Prohibit modification and deletion)
 // 迭代
 function preorderTraversal1(root: TreeNode | null): number[] {
-    if(!root) return []
-    const stack:TreeNode[] = [root]
-    const result: number[] = []
-    while(stack.length){
-        const cur = stack.pop()
-        result.push(cur.val)
-        if(cur.right){
-            stack.push(cur.right)
-        }
-        if(cur.left){
-            stack.push(cur.left)
-        }
+  if (!root) return [];
+  const stack: TreeNode[] = [root];
+  const result: number[] = [];
+  while (stack.length) {
+    const cur = stack.pop();
+    result.push(cur.val);
+    if (cur.right) {
+      stack.push(cur.right);
     }
-    return result;
-};
+    if (cur.left) {
+      stack.push(cur.left);
+    }
+  }
+  return result;
+}
+
 // 递归
+function preorderTraversal2(root: TreeNode | null): number[] {
+  if (!root) return [];
+  return [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)];
+}
+
+// 再写一遍
 function preorderTraversal(root: TreeNode | null): number[] {
-    if (!root) return []
-    return [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)];
-};
+  const result = [];
+  const stack = [root];
+  while (stack.length) {
+    const cur = stack.pop();
+    result.push(cur.val);
+    cur.right && stack.push(cur.right);
+    cur.left && stack.push(cur.left);
+  }
+  return result;
+}
+
 //leetcode submit region end(Prohibit modification and deletion)

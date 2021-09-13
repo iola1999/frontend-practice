@@ -40,18 +40,22 @@ class TreeNode {
 //leetcode submit region begin(Prohibit modification and deletion)
 
 function levelOrder(root: TreeNode | null): number[][] {
-  const res = []
-  if(!root) return []
-  const queue = [root]
-  while(queue.length){
+  if (!root) return [];
+  const res = [];
+  const queue = [root];
+  while (queue.length) {
     // 这一层的
-    const level = []
-    for(let i=0;i<queue.length;i++){
-
+    const level = [];
+    const bakLength = queue.length;
+    for (let i = 0; i < bakLength; i++) {
+      const cur = queue.shift();
+      level.push(cur.val);
+      cur.left && queue.push(cur.left);
+      cur.right && queue.push(cur.right);
     }
-    res.push(level)
-
+    res.push(level);
   }
+  return res;
 }
 
 //leetcode submit region end(Prohibit modification and deletion)
