@@ -25,18 +25,6 @@
 // Related Topics 树 广度优先搜索 二叉树
 // 👍 968 👎 0
 
-class TreeNode {
-  val: number;
-  left: TreeNode | null;
-  right: TreeNode | null;
-
-  constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-    this.val = val === undefined ? 0 : val;
-    this.left = left === undefined ? null : left;
-    this.right = right === undefined ? null : right;
-  }
-}
-
 //leetcode submit region begin(Prohibit modification and deletion)
 
 function levelOrder(root: TreeNode | null): number[][] {

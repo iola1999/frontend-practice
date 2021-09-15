@@ -51,17 +51,6 @@
 // 进阶：递归算法很简单，你可以通过迭代算法完成吗？
 // Related Topics 栈 树 深度优先搜索 二叉树
 // 👍 626 👎 0
-class TreeNode {
-  val: number;
-  left: TreeNode | null;
-  right: TreeNode | null;
-
-  constructor(val?: number, left?: TreeNode | null, right?: TreeNode | null) {
-    this.val = val === undefined ? 0 : val;
-    this.left = left === undefined ? null : left;
-    this.right = right === undefined ? null : right;
-  }
-}
 
 //leetcode submit region begin(Prohibit modification and deletion)
 // 迭代
