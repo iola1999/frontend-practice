@@ -1,13 +1,21 @@
-function threeSplit(input) {
-    const arr = input.split("").reverse();
-    const result = []
-    for (let i = 0; i < arr.length; i++) {
-        result.push(arr[i])
-        if ((i + 1) % 3 === 0 && i !== arr.length - 1) {
-            result.push(',')
-        }
+Function.prototype.bind2 = function (context, ...partArgs) {
+    const obj = Object.create(context) || window
+    const symFoFn = Symbol("fn")
+    obj[symFoFn] = this // fn
+    return function (...leftArgs) {
+        obj[symFoFn](...partArgs, ...leftArgs)
     }
-    console.log(result.reverse().join(""))
 }
 
-threeSplit("12345678")
+function say(word1, word2) {
+    this.name = "123"
+    console.log(this.name, word1, word2)
+}
+
+const obj = {
+    name: "demo"
+}
+
+const boundSay = say.bind(obj, 1, 2)
+new boundSay
+console.log(obj)
