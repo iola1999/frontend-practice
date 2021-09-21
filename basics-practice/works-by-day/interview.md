@@ -50,14 +50,14 @@
 
 ECMA 近期动态 [https://mp.weixin.qq.com/s/tMo8vG1obDpbr4oZ_-QtuA](https://mp.weixin.qq.com/s/tMo8vG1obDpbr4oZ_-QtuA)
 
-字节技术 阿里技术一堆团队技术分享公众号，思否 掘金博文
+字节前端 字节技术 阿里技术一堆团队技术分享公众号，思否 掘金博文
 
 + webcontainer 在浏览器端运行 node.js，WebAssembly 实现
 
 + vue 3.2
   - script setup
   - style v-bind
-  - v-memo 指令，可实现对部分模板树的记忆功能。不会重新创建 VNode，并且会重新使用前一个元素，除非 v-memo 的条件发生变化
+  - v-memo 指令（黄轶的 table 性能优化文章），可实现对部分模板树的记忆功能。不会重新创建 VNode，并且会重新使用前一个元素，除非 v-memo 的条件发生变化
   - $ref()避免在更新 ref 值时需要使用.value
   - Effect scope API，主要是给库作者使用
   - .prop 和 .attr 修饰符。

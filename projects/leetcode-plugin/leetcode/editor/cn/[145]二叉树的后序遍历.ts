@@ -18,6 +18,15 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 
 function postorderTraversal(root: TreeNode | null): number[] {
+  const result: number[] = [];
+  const queue = [root];
+  while (queue.length) {
+    const cur = queue.pop();
+    cur && cur.left && queue.push(cur.left); // 先加左
+    cur && cur.right && queue.push(cur.right);
+    cur && result.unshift(cur.val); // 要倒序添加
+  }
+  return result;
+}
 
-};
 //leetcode submit region end(Prohibit modification and deletion)
