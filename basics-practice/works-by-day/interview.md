@@ -53,7 +53,7 @@ ECMA 近期动态 [https://mp.weixin.qq.com/s/tMo8vG1obDpbr4oZ_-QtuA](https://mp
 字节前端 字节技术 阿里技术一堆团队技术分享公众号，思否 掘金博文
 
 + webcontainer 在浏览器端运行 node.js，WebAssembly 实现
-
++ web component
 + vue 3.2
   - script setup
   - style v-bind
@@ -62,7 +62,7 @@ ECMA 近期动态 [https://mp.weixin.qq.com/s/tMo8vG1obDpbr4oZ_-QtuA](https://mp
   - Effect scope API，主要是给库作者使用
   - .prop 和 .attr 修饰符。
   - Effect scope API，主要是给库作者使用
-    - defineCustomElement， WebComponent 支持
+  - defineCustomElement， WebComponent 支持
 
 + typcscript 4.
 

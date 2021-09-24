@@ -79,9 +79,28 @@ class TreeNode {
  * }
  */
 
+// function inorderTraversal(root: TreeNode | null): number[] {
+//   if (!root) return [];
+//   return [...inorderTraversal(root.left), root.val, ...inorderTraversal(root.right)];
+// }
+
+// 左值，节点值，右值
 function inorderTraversal(root: TreeNode | null): number[] {
   if (!root) return [];
-  return [...inorderTraversal(root.left), root.val, ...inorderTraversal(root.right)];
+  const result = [];
+  const queue = [];
+  let cur = root;
+  while (cur || queue.length) {
+    if (cur) {
+      queue.push(cur);
+      cur = cur.left;
+    } else {
+      cur = queue.pop();
+      result.push(cur.val);
+      cur = cur.right;  // 这一步？
+    }
+  }
+  return result;
 }
 
 //leetcode submit region end(Prohibit modification and deletion)

@@ -53,31 +53,13 @@
 // 👍 626 👎 0
 
 //leetcode submit region begin(Prohibit modification and deletion)
-// 迭代
-function preorderTraversal1(root: TreeNode | null): number[] {
-  if (!root) return [];
-  const stack: TreeNode[] = [root];
-  const result: number[] = [];
-  while (stack.length) {
-    const cur = stack.pop();
-    result.push(cur.val);
-    if (cur.right) {
-      stack.push(cur.right);
-    }
-    if (cur.left) {
-      stack.push(cur.left);
-    }
-  }
-  return result;
-}
-
 // 递归
 function preorderTraversal2(root: TreeNode | null): number[] {
   if (!root) return [];
   return [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)];
 }
 
-// 再写一遍
+// 迭代
 function preorderTraversal(root: TreeNode | null): number[] {
   const result = [];
   const stack = [root];

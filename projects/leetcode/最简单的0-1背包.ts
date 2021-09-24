@@ -10,7 +10,7 @@ function maxBagValue(weights: number[], values: number[], bagWight): number {
   }
   console.table(dp);
   for (let i = 1; i < weights.length; i++) {
-    for (let j = 0; j < bagWight + 1; j++) {
+    for (let j = 0; j <= bagWight; j++) {
       if (j < weights[i]) {
         // 放不下
         dp[i][j] = dp[i - 1][j];
