@@ -1,18 +1,26 @@
-function find(input) {
-    let data = [...input]
-    return {
-        data: data,
-        where(query) {
-            const queryKeys = Object.keys(query)
-            // filter
-            data = data.filter(item => queryKeys.every(queryKey => queryKey instanceof RegExp
-                ? query[queryKey].test(item[queryKey])
-                : item[queryKey] === queryKey))
-            return this;    // this 是指当前这个 obj
-        },
-        orderBy(key, sort) {
-            data.sort((a, b) => sort === 'asc' ? a[key] - b[key] : b[key] - a[key])
-            return data;
-        },
+let product = {price: 10, quantity: 2}, total = 0;
+const depsMap = new Map(); // ①
+const effect = () => {
+    total = product.price * product.quantity
+};
+const track = key => {     // ②
+    let dep = depsMap.get(key);
+    if (!dep) {
+        depsMap.set(key, (dep = new Set()));
     }
+    dep.add(effect);
 }
+
+const trigger = key => {  // ③
+    let dep = depsMap.get(key);
+    if (dep) {
+        dep.forEach(effect => effect());
+    }
+};
+
+track('price');
+effect();
+console.log(`total: ${total}`); // total: 20
+product.price = 20;
+trigger('price');
+console.log(`total: ${total}`); // total: 40
